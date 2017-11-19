@@ -1,0 +1,6 @@
+query get_case_query {
+  description: "Get query by User surname"
+  statement:
+  	SELECT org.acme.iledger.Case
+  		WHERE (contract.user.surname == _$surname)
+}

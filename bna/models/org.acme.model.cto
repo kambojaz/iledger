@@ -1,0 +1,32 @@
+namespace org.acme.iledger
+
+enum Type {
+  o CAR
+  o HOUSE
+  o HEALTH
+}
+
+participant User identified by id {
+  o String id
+  o String name
+  o String surname
+}
+
+asset Contract identified by id {
+  o String id
+  o Type type
+  --> User user
+  o Integer max_summ
+}
+
+asset Case identified by id {
+  o String id
+  --> Contract contract
+  o Integer summ default=0
+  o Integer payed default=0
+  o DateTime time
+}
+
+transaction close_case {
+  --> Case real_case
+}
